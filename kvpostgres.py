@@ -599,29 +599,59 @@ class KVDatabase:
             data = data[key]
         return data
 
-    def _load_query(
-            self,
-            name: str, 
-            /
-    ) -> str:
-        """Load an SQL query from a file.
+    # def _load_query(
+    #         self,
+    #         name: str, 
+    #         /
+    # ) -> str:
+    #     """Load an SQL query from a file.
 
-        Parameters:
-        name (str): The name of the SQL file containing the query.
+    #     Parameters:
+    #     name (str): The name of the SQL file containing the query.
 
-        Returns:
-        str: The contents of the SQL file as a string.
+    #     Returns:
+    #     str: The contents of the SQL file as a string.
 
-        Raises:
-        FileNotFoundError: If the file specified by `path` does not exist.
-        IOError: If there is an error reading the file.
+    #     Raises:
+    #     FileNotFoundError: If the file specified by `path` does not exist.
+    #     IOError: If there is an error reading the file.
     
-        """
+    #     """
 
 
-        base_path = "./sql/keyvalue/"
-        with open(base_path+name) as file:
-            return file.read().strip()
+    #     base_path = "./sql/keyvalue/"
+    #     with open(base_path+name) as file:
+    #         return file.read().strip()
+
+
+# INSERT INTO tickets (
+#     "guild_id", 
+#     "owner_id", 
+#     "channel_id", 
+#     "user_ids", 
+#     "is_open", 
+#     "is_valid", 
+#     "panel_id", 
+#     "original_name"
+# )
+# VALUES (
+#     $1, 
+#     $2,
+#     $3, 
+#     $4, 
+#     $5, 
+#     $6, 
+#     $7, 
+#     $8
+# )
+# ON CONFLICT (channel_id) DO UPDATE
+# SET "guild_id" = EXCLUDED."guild_id",
+#     "user_ids" = EXCLUDED."user_ids",
+#     "is_open" = EXCLUDED."is_open",
+#     "is_valid" = EXCLUDED."is_valid",
+#     "panel_id" = EXCLUDED."panel_id",
+#     "original_name" = EXCLUDED."original_name";
+
         
     async def _fetch(
             self,
